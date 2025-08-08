@@ -10,6 +10,9 @@ let gallery = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+const loaderElem = document.querySelector('.loader-placeholder');
+const loadMoreBtn = document.querySelector('.load-more');
+
 export const showError = text => {
   iziToast.show({
     message: text,
@@ -84,3 +87,19 @@ export const showGallery = images => {
 export const clearGallery = () => {
   ulElem.innerHTML = '';
 };
+
+// Yükleyici ve "Daha Fazla Yükle" butonu yönetim fonksiyonları
+export const showLoader = () => {
+  loaderElem.style.display = 'block';
+};
+
+export const hideLoader = () => {
+  loaderElem.style.display = 'none';
+};
+
+export const showLoadMoreBtn = () => {
+  loadMoreBtn.classList.remove('is-hidden');
+};
+
+export const hideLoadMoreBtn = () => {
+  loadMoreBtn.classList.add('is-hidden');
