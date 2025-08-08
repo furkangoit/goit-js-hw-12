@@ -9,14 +9,16 @@
 </head>
 
 <body>
-  <form class="search-form">
+  <form class="form">
     <input type="text" class="form-input" id="image-search" name="input" placeholder="Search images..."
       autocomplete="off" />
     <button type="submit" class="search-btn">Search</button>
   </form>
 
   <ul class="gallery"></ul>
-  <div class="loader-placeholder"></div>
+  <div class="loader-placeholder">
+    <span class="loader"></span>
+  </div>
   <button type="button" class="load-more is-hidden">Load more</button>
   <script type="module" src="./main.js"></script>
 </body>
