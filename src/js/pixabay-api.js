@@ -3,10 +3,10 @@ import axios from 'axios';
 const API_KEY = '51495108-70da61c0e762648aa60ab0fc1';
 const api_URL = 'https://pixabay.com/api/';
 
-export const searchImage = (searchValue, page = 1, per_page = 40) => {
+export const searchImagesAsync = async (searchValue, page = 1, per_page = 40) => {
   const url = `${api_URL}?key=${API_KEY}&q=${encodeURIComponent(
     searchValue
   )}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${per_page}`;
-  console.log(page);
-  return axios.get(url);
-};
+    const response = await axios.get(url);
+    return response.data;
+  }

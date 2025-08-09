@@ -57,24 +57,24 @@ export const showGallery = images => {
       alt="${tags}"
     />
   </a>
-  <div class = "image-info-block">
-    <div class = "image-info-block-part">
+  <div class="image-info-block">
+    <div class="image-info-block-part">
       <p class="bold">Likes</p>
-      <p></p>${likes}</p>
+      <p>${likes}</p>
+    </div>
+    <div class="image-info-block-part">
+      <p class="bold">Views</p>
+      <p>${views}</p>
+    </div>
+    <div class="image-info-block-part">
+      <p class="bold">Comments</p>
+      <p>${comments}</p>
+    </div>
+    <div class="image-info-block-part">
+      <p class="bold">Downloads</p>
+      <p>${downloads}</p>
+    </div>
   </div>
-    <div class = "image-info-block-part">
-    <p class="bold">Views</p>
-    <p>${views}</p>
-  </div>
-  <div class = "image-info-block-part">
-    <p class="bold">Comments</p>
-    <p>${comments}</p>
-  </div>
-  <div class = "image-info-block-part">
-    <p class="bold">Downloads</p>
-    <p>${downloads}</p>
-  </div>
-</div>
 </li>
 `
     )
@@ -90,16 +90,19 @@ export const clearGallery = () => {
 
 // Yükleyici ve "Daha Fazla Yükle" butonu yönetim fonksiyonları
 export const showLoader = () => {
+  loaderElem.classList.add('loader');
   loaderElem.style.display = 'block';
 };
 
 export const hideLoader = () => {
+  loaderElem.classList.remove('loader');
   loaderElem.style.display = 'none';
 };
 
-export const showLoadMoreBtn = () => {
+export const showLoadMore = () => {
   loadMoreBtn.classList.remove('is-hidden');
 };
 
-export const hideLoadMoreBtn = () => {
+export const hideLoadMore = () => {
   loadMoreBtn.classList.add('is-hidden');
+}

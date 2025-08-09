@@ -2,16 +2,14 @@ import * as api from './js/pixabay-api';
 import * as render from './js/render-functions';
 
 const searchForm = document.querySelector('.search-form');
-const loader = document.querySelector('.loader-placeholder');
-const loadMore = document.querySelector('.load-more');
 let searchInputValue;
 const per_page = 40;
 let page = 1;
 
 const loadPictures = async () => {
   try {
-    loader.classList.add('loader');
-    loadMore.classList.add('is-hidden');
+    render.showLoader();
+    render.hideLoadMore();
     const response = await api.searchImage(searchInputValue, page, per_page);
     console.log(response);
 
@@ -23,7 +21,7 @@ const loadPictures = async () => {
     }
     render.showGallery(response.data.hits);
     if (response.data.totalHits > page * per_page) {
-      loadMore.classList.remove('is-hidden');
+      render.showLoadMore();
     } else {
       render.showMessage(
         "We're sorry, but you've reached the end of search results."
@@ -32,7 +30,7 @@ const loadPictures = async () => {
   } catch (error) {
     console.error('Error fetching images:', error);
   } finally {
-    loader.classList.remove('loader');
+    render.hideLoader();
   }
 };
 
@@ -48,7 +46,7 @@ searchForm.addEventListener('submit', async event => {
   loadPictures();
 });
 
-loadMore.addEventListener('click', async () => {
+document.querySelector('.load-more').addEventListener('click', async () => {
   page++;
   await loadPictures();
   const galleryItemHeight = document
